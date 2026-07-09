@@ -1,0 +1,43 @@
+/* OneDrive style folder grid */
+.doccenter-folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.doccenter-folder-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.doccenter-folder-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-color: #d1d5db;
+}
+
+.doccenter-folder-icon {
+    font-size: 32px;
+    color: #3b82f6; /* OneDrive blue */
+}
+
+.doccenter-folder-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.doccenter-folder-content {
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #3b82f6;
+}

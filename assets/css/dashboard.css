@@ -1,0 +1,935 @@
+﻿/* OneDrive style folder grid */
+.doccenter-folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.doccenter-folder-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.doccenter-folder-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-color: #d1d5db;
+}
+
+.doccenter-folder-icon {
+    font-size: 32px;
+    color: #3b82f6; /* OneDrive blue */
+}
+
+.doccenter-folder-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.doccenter-folder-content {
+    display: none;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #3b82f6;
+}
+
+
+/* Dashboard core */
+        .doccenter-user-promote-btn {
+            background: #19b916ff !important;
+            color: #fff !important;
+            padding: 4px 12px !important;
+            border-radius: 16px !important;
+            border: none !important;
+            font-size: 11px !important;
+            cursor: pointer !important;
+            font-weight: 500 !important;
+            transition: background 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .doccenter-user-demote-super-btn {
+            background: #ef4444ff !important;
+            color: #fff !important;
+            padding: 4px 12px !important;
+            border-radius: 16px !important;
+            border: none !important;
+            font-size: 11px !important;
+            cursor: pointer !important;
+            font-weight: 500 !important;
+            transition: background 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .doccenter-demote-admin-btn {
+            background: #ef4444;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 16px !important;
+            border: none;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .doccenter-demote-admin-btn:hover {
+            background: #dc2626;
+            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+        }
+
+        .doccenter-root {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .doccenter-shell {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+        }
+
+        /* Sidebar: fixed width, full height, no outer padding */
+        .doccenter-sidebar {
+            width: 260px;
+            padding: 50px 0px;
+            background: #ffffff;
+            border-right: 1px solid rgba(148, 163, 184, 0.5);
+            box-shadow: none;
+            border-radius: 0;
+            position: sticky;
+            top: 0;
+            align-self: flex-start;
+            height: 100vh;
+            box-sizing: border-box;
+
+        }
+
+        /* Main content: full width area, no "boxed" card */
+        .doccenter-main {
+            flex: 1;
+            margin-left: 0;
+            background: #f9fafb;
+            border-radius: 0;
+            padding: 24px 24px 32px;
+            border: none;
+            box-shadow: none;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px) {
+            .doccenter-shell {
+                flex-direction: column;
+                min-height: auto !important;
+            }
+
+            .doccenter-sidebar {
+                display: none !important;
+                position: relative !important;
+                left: 0 !important;
+                width: 100% !important;
+                max-height: none !important;
+                height: auto !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.4) !important;
+                padding: 12px !important;
+                margin-bottom: 0 !important;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+            }
+
+            .doccenter-main {
+                padding: 16px 12px 24px;
+            }
+        }
+
+        .doccenter-logo {
+            padding: 8px 0 4px 0;
+            text-align: center !important;
+        }
+
+        .doccenter-logo img {
+            max-width: 165px;
+            height: auto;
+            display: block;
+        }
+
+        .doccenter-brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .doccenter-brand-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-nav {
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .doccenter-nav-item {
+            padding: 9px 10px;
+            border-radius: 10px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            color: #4b5563;
+            border: 1px solid transparent;
+        }
+
+        .doccenter-nav-item span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doccenter-nav-item-active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(129, 140, 248, 0.1));
+            border-color: rgba(139, 92, 246, 0.3);
+            color: #4c1d95;
+        }
+
+        .doccenter-nav-pill {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(139, 92, 246, 0.12);
+            color: #4c1d95;
+        }
+
+        .doccenter-main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .doccenter-main-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-main-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .doccenter-user-chip {
+            font-size: 12px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            color: #374151;
+        }
+
+        .doccenter-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 16px 16px 18px;
+            border: 1px solid rgba(209, 213, 219, 0.8);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+            margin-bottom: 14px;
+        }
+
+        .doccenter-card h3 {
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-card-sub {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .doccenter-fields-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 14px;
+        }
+
+        @media (max-width: 700px) {
+            .doccenter-fields-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .doccenter-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .doccenter-field label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .doccenter-field input[type="text"],
+        .doccenter-field input[type="email"],
+        .doccenter-field input[type="password"],
+        .doccenter-field select,
+        .doccenter-field textarea {
+            border-radius: 10px;
+            border: 1px solid #d1d5db;
+            padding: 8px 9px;
+            font-size: 13px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .doccenter-field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .doccenter-field input:focus,
+        .doccenter-field select:focus,
+        .doccenter-field textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.35);
+            background: #f9fafb;
+        }
+
+        .doccenter-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            max-height: 160px;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            padding: 6px 8px;
+            background: #f9fafb;
+        }
+
+        .doccenter-checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #374151;
+        }
+
+        .doccenter-checkbox-item input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .doccenter-btn-primary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            border-radius: 999px !important;
+            border: none !important;
+            cursor: pointer !important;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+            color: #fff !important;
+            box-shadow: 0 10px 24px rgba(99, 102, 241, 0.35) !important;
+        }
+
+        .doccenter-btn-secondary {
+            font-size: 12px !important;
+            padding: 6px 12px !important;
+            border-radius: 999px !important;
+            border: 1px solid #d1d5db !important;
+            background: #fff !important;
+            cursor: pointer !important;
+            color: #374151 !important;
+        }
+
+        .doccenter-btn-danger {
+            font-size: 12px !important;
+            padding: 6px 12px !important;
+            border-radius: 999px !important;
+            border: 1px solid #fecaca !important;
+            background: #e33333ff !important;
+            cursor: pointer;
+            color: #ffffffff !important;
+        }
+
+        .doccenter-doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .doccenter-doc-item {
+            padding: 8px 10px;
+            border-radius: 12px;
+            background: #f9fafb;
+            border: 1px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .doccenter-doc-item:hover {
+            background: #eef2ff;
+            border-color: #c7d2fe;
+        }
+
+        .doccenter-doc-title {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .doccenter-doc-meta {
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
+        .doccenter-doc-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .doccenter-doc-actions a,
+        .doccenter-doc-actions button {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            text-decoration: none;
+            color: #374151;
+            cursor: pointer;
+        }
+
+        /* Hover effect */
+        .doccenter-doc-actions a:hover,
+        .doccenter-doc-actions button:hover {
+            background: #3371d4ff;
+            /* Hover background */
+            color: #ffffff;
+            /* White text on hover */
+            border-color: #e2e2e2ff;
+            /* Match border on hover */
+            box-shadow: 0 2px 6px rgba(55, 65, 81, 0.25);
+        }
+
+        .doccenter-alert.doccenter-alert-success {
+    background: #ecfdf3 !important;
+    border: 1px solid #bbf7d0 !important;
+    color: #166534 !important;
+}
+
+.doccenter-alert.doccenter-alert-error {
+    background: #fef2f2 !important;
+    border: 1px solid #fecaca !important;
+    color: #b91c1c !important;
+}
+
+        .doccenter-alert {
+            margin-bottom: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .doccenter-alert-success {
+            background: #ecfdf3;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .doccenter-alert-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+        }
+
+        .doccenter-section {
+            display: none;
+        }
+
+        .doccenter-section-active {
+            display: block;
+        }
+
+        /* View toggles for list / grid */
+        .doccenter-docview-toggle {
+            display: inline-flex;
+            border-radius: 999px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+
+        .doccenter-docview-toggle button {
+            border: none;
+            background: transparent;
+            font-size: 11px;
+            padding: 4px 10px;
+            cursor: pointer;
+            color: #4b5563;
+        }
+
+        .doccenter-docview-toggle button.doccenter-docview-active {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        /* Grid mode */
+        .doccenter-doc-list-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .doccenter-doc-list-grid .doccenter-doc-item {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            min-height: 150px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+            transition: 0.15s ease-in-out;
+        }
+
+        .doccenter-doc-list-grid .doccenter-doc-item:hover {
+            background: #f9fafb;
+            transform: translateY(-2px);
+        }
+
+        .doccenter-doc-list-grid .doccenter-doc-actions {
+            margin-top: auto;
+        }
+
+        /* SLIDE-OVER EDIT PANEL */
+        .doccenter-edit-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.40);
+            display: none;
+            align-items: stretch;
+            justify-content: flex-end;
+            z-index: 1200;
+        }
+
+        .doccenter-edit-overlay-active {
+            display: flex;
+        }
+
+        .doccenter-edit-panel {
+            width: 420px;
+            max-width: 100%;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -10px 0 35px rgba(15, 23, 42, 0.4);
+            padding: 18px 18px 20px;
+            box-sizing: border-box;
+            border-left: 1px solid rgba(209, 213, 219, 0.8);
+            position: relative;
+        }
+
+        .doccenter-edit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .doccenter-edit-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-edit-close {
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .doccenter-edit-body {
+            height: calc(100% - 70px);
+            overflow: auto;
+            padding-right: 4px;
+        }
+
+        /* VIEW MODAL (DETAILS) */
+        .doccenter-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1300;
+        }
+
+        .doccenter-modal-active {
+            display: flex;
+        }
+
+        .doccenter-modal {
+            background: #ffffff;
+            max-width: 480px;
+            width: 95%;
+            border-radius: 16px;
+            padding: 16px 18px 18px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.5);
+            box-sizing: border-box;
+        }
+
+        .doccenter-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .doccenter-modal-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-modal-close {
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+        .doccenter-modal-meta {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .doccenter-modal-notes {
+            font-size: 13px;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        /* USER EDIT MODAL */
+        .doccenter-user-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.40);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1250;
+        }
+
+        .doccenter-user-overlay-active {
+            display: flex;
+        }
+
+        .doccenter-user-modal {
+            background: #ffffff;
+            max-width: 420px;
+            width: 95%;
+            border-radius: 16px;
+            padding: 16px 18px 18px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.5);
+            box-sizing: border-box;
+        }
+
+        .doccenter-user-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .doccenter-user-modal-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .doccenter-user-modal-close {
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+
+/* Dashboard layout */
+        .doccenter-folder-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .doccenter-folder {
+            display: block;
+            padding: 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #f9fafb;
+            text-decoration: none;
+            color: #374151;
+            transition: 0.25s;
+        }
+
+        .doccenter-folder:hover {
+            background: #eef2ff;
+            border-color: #c7d2fe;
+        }
+
+        .doccenter-folder-icon {
+            font-size: 32px;
+            margin-bottom: 6px;
+        }
+
+        .doccenter-back-btn {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #2563eb;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .doccenter-breadcrumb {
+            margin-bottom: 10px;
+            font-size: 13px;
+            align-items: center;
+        }
+
+        .doccenter-breadcrumb a {
+            color: #0000e2;
+            text-decoration: none;
+            align-self: center;
+        }
+
+        .doccenter-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .doccenter-breadcrumb-separator {
+            color: #9ca3af;
+            margin: 0 4px;
+        }
+
+        .doccenter-subfolder-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .doccenter-subfolder {
+            padding: 12px !important;
+        }
+
+        .doccenter-subfolder .doccenter-folder-icon {
+            font-size: 28px;
+        }
+
+        .doccenter-subfolder .doccenter-folder-name {
+            font-size: 13px;
+        }
+
+
+        .doccenter-notice {
+            margin: 0 0 18px 0 !important;
+            padding: 12px 16px !important;
+            border-radius: 8px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            border-width: 1px !important;
+            border-style: solid !important;
+            border-color: transparent !important;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
+        }
+
+        /* Success */
+        .doccenter-notice-success {
+            background-color: #ecfdf5 !important;
+            border-color: #a7f3d0 !important;
+            color: #065f46 !important;
+        }
+
+        /* Error */
+        .doccenter-notice-error {
+            background-color: #fef2f2 !important;
+            border-color: #fecaca !important;
+            color: #991b1b !important;
+        }
+
+        .doccenter-root {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            position: relative;
+            background: #f9fafb;
+        }
+
+        @media (max-width: 900px) {
+            .doccenter-root {
+                padding: 0;
+            }
+        }
+
+        .doccenter-shell {
+            display: flex;
+            align-items: stretch;
+            min-height: 100vh;
+        }
+
+        @media (max-width: 900px) {
+            .doccenter-shell {
+                flex-direction: column;
+                min-height: auto;
+            }
+        }
+
+        .doccenter-sidebar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 260px;
+            padding: 0 16px 16px 0;
+            background: #ffffff;
+            border-right: 1px solid rgba(148, 163, 184, 0.5);
+            box-shadow: none;
+            border-radius: 0;
+            box-sizing: border-box;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 900px) {
+            .doccenter-sidebar {
+                position: relative;
+                width: 100%;
+                max-height: none;
+                border-right: none;
+                border-radius: 0;
+                padding: 12px;
+                margin-bottom: 0;
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+            }
+        }
+
+        .doccenter-main {
+            flex: 1;
+            margin: 0;
+            padding: 24px 24px 32px;
+            background: #f9fafb;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 900px) {
+            .doccenter-main {
+                padding: 16px 12px 24px;
+            }
+        }
+
+        .doccenter-logo {
+            padding: 12px 0 6px 0;
+        }
+
+        /* Mobile toggle button */
+        .doccenter-mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 3001;
+            border: none;
+            background: white;
+            padding: 8px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Overlay */
+        .doccenter-sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 3000;
+        }
+
+        /* Sidebar default (desktop) */
+        .doccenter-sidebar {
+            width: 260px;
+            min-height: 100vh;
+            background: #fff;
+            border-right: 1px solid #e5e7eb;
+            padding: 20px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .doccenter-mobile-toggle {
+                display: block;
+            }
+
+            .doccenter-sidebar {
+                position: fixed;
+                top: 0;
+                left: -280px;
+                width: 260px;
+                height: 100%;
+                background: #fff;
+                z-index: 3001;
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+                transition: left 0.3s ease;
+            }
+
+            .doccenter-sidebar.active {
+                left: 0;
+            }
+
+            .doccenter-sidebar-overlay.active {
+                display: block;
+            }
+        }
