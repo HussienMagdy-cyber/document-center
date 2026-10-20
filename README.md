@@ -4,6 +4,8 @@ A WordPress plugin that provides a frontend document management system with role
 
 **Version:** 2.6
 
+**Full documentation:** [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md) — architecture, data model, roles, handlers, functions, and security in one file.
+
 ## Features
 
 - **Frontend dashboard** — Upload, browse, search, and manage documents without using the WordPress admin.
@@ -76,6 +78,7 @@ Maximum upload size per file: **250 MB**.
 document-center/
 ├── document-center.php              # Plugin bootstrap
 ├── README.md
+├── docs/DOCUMENTATION.md            # Full plugin documentation
 ├── assets/
 │   ├── css/style.css                # Dashboard styles
 │   └── js/dashboard.js              # Dashboard interactions
